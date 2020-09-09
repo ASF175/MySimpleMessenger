@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startFragment">
+
+    <navigation
+        android:id="@+id/authentication"
+        app:startDestination="@id/signInFragment" >
+        <fragment
+            android:id="@+id/waitFragment"
+            android:name="com.example.chattest.Authentication.WaitFragment"
+            tools:layout="@layout/wait_fragment">
+            <action
+                android:id="@+id/action_waitFragment_to_signInFragment"
+                app:destination="@id/signInFragment"
+                app:popUpTo="@id/signInFragment"
+                app:popUpToInclusive="true"
+                app:enterAnim="@android:anim/slide_in_left"
+                app:exitAnim="@android:anim/slide_out_right"
+                app:popEnterAnim="@android:anim/slide_in_left"
+                app:popExitAnim="@android:anim/slide_out_right" />
+
+        </fragment>
+        <fragment
+            android:id="@+id/signInFragment"
+            android:name="com.example.chattest.Authentication.SignInFragment"
+            tools:layout="@layout/sign_in_fragment">
+            <action
+                android:id="@+id/action_signInFragment_to_waitFragment"
+                app:destination="@id/waitFragment"
+                app:enterAnim="@android:anim/slide_in_left"
+                app:exitAnim="@android:anim/slide_out_right"
+                app:popEnterAnim="@android:anim/slide_in_left"
+                app:popExitAnim="@android:anim/slide_out_right" />
+            <action
+                android:id="@+id/action_signInFragment_to_signUpFragment"
+                app:destination="@id/signUpFragment"
+                app:enterAnim="@android:anim/slide_in_left"
+                app:exitAnim="@android:anim/slide_out_right"
+                app:popEnterAnim="@android:anim/slide_in_left"
+                app:popExitAnim="@android:anim/slide_out_right" />
+        </fragment>
+        <fragment
+            android:id="@+id/signUpFragment"
+            android:name="com.example.chattest.Authentication.SignUpFragment"
+            tools:layout="@layout/sign_up_fragment">
+            <action
+                android:id="@+id/action_signUpFragment_to_waitFragment"
+                app:destination="@id/waitFragment"
+                app:enterAnim="@android:anim/slide_in_left"
+                app:exitAnim="@android:anim/slide_out_right"
+                app:popEnterAnim="@android:anim/slide_in_left"
+                app:popExitAnim="@android:anim/slide_out_right" />
+        </fragment>
+        <action
+            android:id="@+id/action_global_dialogSelectFragment"
+            app:destination="@id/dialogSelectFragment"
+            app:popUpTo="@id/nav_graph"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </navigation>
+    <fragment
+        android:id="@+id/dialogSelectFragment"
+        android:name="com.example.chattest.SelectDialog.DialogSelectFragment"
+        tools:layout="@layout/dialog_select_fragment">
+        <action
+            android:id="@+id/action_dialogSelectFragment_to_authentication"
+            app:destination="@id/authentication"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_dialogSelectFragment_to_dialogFragment"
+            app:destination="@id/dialogFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_dialogSelectFragment_to_selectUserToDialogFragment"
+            app:destination="@id/selectUserToDialogFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/dialogFragment"
+        android:name="com.example.chattest.Dialog.DialogFragment"
+        tools:layout="@layout/dialog_fragment">
+        <argument
+            android:name="dialogId"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="type"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="userIdOpponent"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="url"
+            android:defaultValue="0"
+            app:argType="string" />
+        <argument
+            android:name="cryptionType"
+            app:argType="string"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_dialogFragment_to_dialogSelectFragment"
+            app:destination="@id/dialogSelectFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <argument
+            android:name="sign"
+            app:argType="string"
+            android:defaultValue="0" />
+        <argument
+            android:name="canWrite"
+            app:argType="string"
+            android:defaultValue="0" />
+        <argument
+            android:name="userIdAuthor"
+            app:argType="string"
+            android:defaultValue="0" />
+        <argument android:name="decryptedAES"
+            app:argType="string"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_dialogFragment_to_dialogInfoFragment"
+            app:destination="@id/dialogInfoFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_dialogFragment_to_userInfoFragment"
+            app:destination="@id/userInfoFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/userCabinetFragment"
+        android:name="com.example.chattest.UserCabinet.UserCabinetFragment"
+        tools:layout="@layout/user_cabinet_fragment" >
+        <action
+            android:id="@+id/action_userCabinetFragment_to_changeUserInfoFragment"
+            app:destination="@id/changeUserInfoFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectUserToDialogFragment"
+        android:name="com.example.chattest.SelectUsersToDialog.SelectUserToDialogFragment"
+        tools:layout="@layout/select_user_fragment">
+        <action
+            android:id="@+id/action_selectUserToDialogFragment_to_dialogFragment"
+            app:destination="@id/dialogFragment"
+            app:popUpTo="@id/dialogSelectFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.example.chattest.Main.StartFragment"
+        tools:layout="@layout/start_fragment">
+        <action
+            android:id="@+id/action_startFragment_to_authentication"
+            app:destination="@id/authentication"
+            app:popUpTo="@id/nav_graph"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_startFragment_to_dialogSelectFragment"
+            app:destination="@id/dialogSelectFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/changeUserInfoFragment"
+        android:name="com.example.chattest.UserCabinet.ChangeUserInfoFragment"
+        tools:layout="@layout/change_user_info_fragment">
+        <argument
+            android:name="type"
+            android:defaultValue="0"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/dialogInfoFragment"
+        android:name="com.example.chattest.DialogInfo.DialogInfoFragment"
+        tools:layout="@layout/dialog_info_fragment" >
+        <action
+            android:id="@+id/action_dialogInfoFragment_to_userInfoFragment"
+            app:destination="@id/userInfoFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <argument
+            android:name="dialogId"
+            app:argType="string"
+            android:defaultValue="0" />
+        <argument
+            android:name="dialogName"
+            app:argType="string"
+            android:defaultValue="0" />
+        <argument
+            android:name="dialogUri"
+            app:argType="string"
+            android:defaultValue="0" />
+        <argument
+            android:name="type"
+            app:argType="string"
+            android:defaultValue="0" />
+        <argument
+            android:name="authorId"
+            app:argType="string"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/userInfoFragment"
+        android:name="com.example.chattest.DialogInfo.UserInfoFragment"
+        tools:layout="@layout/user_info_fragment" >
+        <argument
+            android:name="userId"
+            app:argType="string"
+            android:defaultValue="0" />
+        <argument
+            android:name="userName"
+            app:argType="string"
+            android:defaultValue="0" />
+        <argument
+            android:name="userUri"
+            app:argType="string"
+            android:defaultValue="0" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue="0" />
+        <argument
+            android:name="type"
+            app:argType="string"
+            android:defaultValue="0" />
+    </fragment>
+</navigation>
